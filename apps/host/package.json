@@ -1,5 +1,5 @@
 {
-	"name": "@swalker-zephyr/remote",
+	"name": "@swalker-zephyr/host",
 	"private": true,
 	"version": "1.0.0",
 	"scripts": {
