@@ -62,8 +62,8 @@ export default withZephyr()({
 				remote: "remote@http://localhost:3002/static/js/remoteEntry.js",
 			},
 			shared: {
-				react: { singleton: true },
-				"react-dom": { singleton: true },
+				react: { singleton: true, eager: true },
+				"react-dom": { singleton: true, eager: true },
 			},
 		}),
 		new rspack.HtmlRspackPlugin({

@@ -1,31 +1,26 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
+import { Suspense, useState } from "react";
 import "./App.css";
+import { lazy } from "react";
+
+//@ts-expect-error
+const Remote = lazy(() => import("remote/App"));
 
 function App() {
 	const [count, setCount] = useState(10);
 
 	return (
-  <div className="App">
-    <div>
-      <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-        <img src={reactLogo} className="logo react" alt="React logo" />
-      </a>
-    </div>
-    <h1>Rspack + React + TypeScript + Zephyr</h1>
-    <div className="card">
-      <button type="button" onClick={() => setCount((count) => count + 1)}>
-        count is {count}
-      </button>
-      <p>
-        Edit <code>src/App.tsx</code> and save to test HMR
-      </p>
-    </div>
-    <p className="read-the-docs">
-      Click on the Rspack and React logos to learn more
-    </p>
-  </div>
-);
+		<div className="App">
+			<h1>Host App</h1>
+			<p>I'm the host app, I like to drive</p>
+			<p>Whats rendered in this red box is a remote app</p>
+			<h2>Remote</h2>
+			<div style={{ border: "1px solid red" }}>
+				<Suspense fallback={"Loading Remote...."}>
+					<Remote />
+				</Suspense>
+			</div>
+		</div>
+	);
 }
 
 export default App;
